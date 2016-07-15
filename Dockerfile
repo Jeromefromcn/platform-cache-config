@@ -1,3 +1,3 @@
-FROM java:8-jre-alpine
+FROM jeromefromcn/docker-alpine-java-bash
 MAINTAINER Jerome Jiang
 COPY platform-cache-config/ /platform-cache-config/
