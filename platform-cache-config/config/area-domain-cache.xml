@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+    <moduleName>area</moduleName>
+    <sqlConfigs>
+        <sqlConfig>
+            <key>address</key>
+            <sqlScript>select * from address a where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>address</foreignTable>
+                    <foreignKey>parent_id</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>saleArea</key>
+            <sqlScript>select * from sale_area sa where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>serviceSegment</key>
+            <sqlScript>select * from service_segment ss where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>serviceSegment</foreignTable>
+                    <foreignKey>parent_id</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>saleArea</foreignTable>
+                    <foreignKey>sale_area_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>serSegAddrRel</key>
+            <sqlScript>select * from ser_segm_addr_rel_his r where create_instant>=? or  modify_instant>=?</sqlScript>
+            <relationTable>true</relationTable>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>serviceSegment</foreignTable>
+                    <foreignKey>service_segment_id</foreignKey>
+                    <cacheValueKey>address_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>address</foreignTable>
+                    <foreignKey>address_id</foreignKey>
+                    <cacheValueKey>service_segment_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+
+        <sqlConfig>
+            <key>serSegUserRel</key>
+            <sqlScript>select * from ser_seg_user_rel_his r where create_instant>=? or  modify_instant>=?</sqlScript>
+            <relationTable>true</relationTable>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>serviceSegment</foreignTable>
+                    <foreignKey>service_segment_id</foreignKey>
+                    <cacheValueKey>user_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>user</foreignTable>
+                    <foreignKey>user_id</foreignKey>
+                    <cacheValueKey>service_segment_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+    </sqlConfigs>
+</cacheConfig>

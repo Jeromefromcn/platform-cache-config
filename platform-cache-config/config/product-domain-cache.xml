@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+    <moduleName>product</moduleName>
+    <sqlConfigs>
+        <sqlConfig>
+            <key>business</key>
+            <sqlScript>select * from business where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>accessMode</key>
+            <sqlScript>select * from access_mode where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>business</foreignTable>
+                    <foreignKey>business_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>accessResourceType</key>
+            <sqlScript>select * from access_resource_type where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>accessMode</foreignTable>
+                    <foreignKey>access_mode_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>brand</key>
+            <sqlScript>select * from brand where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>product</key>
+            <sqlScript>select * from product where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>business</foreignTable>
+                    <foreignKey>business_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>productClass</foreignTable>
+                    <foreignKey>product_class_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>productServiceRel</key>
+            <sqlScript>select * from product_service_rel_his where create_instant>=? or modify_instant>=?</sqlScript>
+            <relationTable>true</relationTable>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>product</foreignTable>
+                    <foreignKey>product_id</foreignKey>
+                    <cacheValueKey>service_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>service</foreignTable>
+                    <foreignKey>service_id</foreignKey>
+                    <cacheValueKey>product_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>productClass</key>
+            <sqlScript>select * from product_class a where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>productClass</foreignTable>
+                    <foreignKey>parent_id</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>productLabel</key>
+            <sqlScript>select * from product_label a where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>productLabelRel</key>
+            <sqlScript>select * from product_label_rel_his where create_instant>=? or modify_instant>=?</sqlScript>
+            <relationTable>true</relationTable>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>product</foreignTable>
+                    <foreignKey>product_id</foreignKey>
+                    <cacheValueKey>product_label_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>productLabel</foreignTable>
+                    <foreignKey>product_label_id</foreignKey>
+                    <cacheValueKey>product_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offer</key>
+            <sqlScript>select * from OFFER where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>business</foreignTable>
+                    <foreignKey>business_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>brand</foreignTable>
+                    <foreignKey>brand_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>offerClass</foreignTable>
+                    <foreignKey>offer_class_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerResourceSpec</key>
+            <sqlScript>select * from offer_resource_spec where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offer</foreignTable>
+                    <foreignKey>offer_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerSubRole</key>
+            <sqlScript>select * from offer_sub_role where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offer</foreignTable>
+                    <foreignKey>offer_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerComponent</key>
+            <sqlScript>select * from offer_component where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offerSubRole</foreignTable>
+                    <foreignKey>offer_sub_role_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerProduct</key>
+            <sqlScript>select * from offer_product where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offerSubRole</foreignTable>
+                    <foreignKey>offer_sub_role_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>offerComponent</foreignTable>
+                    <foreignKey>offer_component_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerConstraintItem</key>
+            <sqlScript>select * from offer_constraint_item where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offer</foreignTable>
+                    <foreignKey>offer_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerConstraintRule</key>
+            <sqlScript>select * from offer_constraint_rule where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offer</foreignTable>
+                    <foreignKey>offer_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerCatalog</key>
+            <sqlScript>select * from offer_catalog where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerCatalogItem</key>
+            <sqlScript>select * from offer_catalog_item where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offerCatalog</foreignTable>
+                    <foreignKey>offer_catalog_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>offerCatalogItem</foreignTable>
+                    <foreignKey>parent_id</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerCatalogConsItem</key>
+            <sqlScript>select * from offer_catalog_cons_item where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offerCatalog</foreignTable>
+                    <foreignKey>offer_catalog_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <!--<sqlConfig>-->
+            <!--<key>offerNo</key>-->
+            <!--<sqlScript>select * from offer_no where create_instant>=? or modify_instant>=?</sqlScript>-->
+            <!--<foreignTableInfos>-->
+                <!--<foreignTableInfo>-->
+                    <!--<foreignTable>company</foreignTable>-->
+                    <!--<foreignKey>company_id</foreignKey>-->
+                <!--</foreignTableInfo>-->
+            <!--</foreignTableInfos>-->
+        <!--</sqlConfig>-->
+        <!--<sqlConfig>-->
+            <!--<key>offerNoConsItem</key>-->
+            <!--<sqlScript>select * from offer_no_cons_item where create_instant>=? or modify_instant>=?</sqlScript>-->
+            <!--<foreignTableInfos>-->
+                <!--<foreignTableInfo>-->
+                    <!--<foreignTable>offer_no</foreignTable>-->
+                    <!--<foreignKey>offer_no_id</foreignKey>-->
+                <!--</foreignTableInfo>-->
+            <!--</foreignTableInfos>-->
+        <!--</sqlConfig>-->
+        <sqlConfig>
+            <key>offerRelation</key>
+            <sqlScript>select * from offer_relation where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerRelationItem</key>
+            <sqlScript>select * from offer_relation_item where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offerRelation</foreignTable>
+                    <foreignKey>offer_relation_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>offer</foreignTable>
+                    <foreignKey>offer_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerClass</key>
+            <sqlScript>select * from offer_class where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offerClass</foreignTable>
+                    <foreignKey>parent_id</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerLabel</key>
+            <sqlScript>select * from offer_label where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>offerLabelRel</key>
+            <sqlScript>select * from offer_label_rel_his where create_instant>=? or modify_instant>=?</sqlScript>
+            <relationTable>true</relationTable>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offer</foreignTable>
+                    <foreignKey>offer_id</foreignKey>
+                    <cacheValueKey>offer_label_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>offerLabel</foreignTable>
+                    <foreignKey>offer_label_id</foreignKey>
+                    <cacheValueKey>offer_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>action</key>
+            <sqlScript>select * from action where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>operitem</key>
+            <sqlScript>select * from operitem where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>business</foreignTable>
+                    <foreignKey>business_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>action</foreignTable>
+                    <foreignKey>action_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>operitemConstraintItem</key>
+            <sqlScript>select * from operitem_constraint_item where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>operitem</foreignTable>
+                    <foreignKey>operitem_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>acceptOperation</key>
+            <sqlScript>select * from accept_operation where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>pricePlan</key>
+            <sqlScript>select * from price_plan where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>offer</foreignTable>
+                    <foreignKey>offer_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>pricePlanCondition</key>
+            <sqlScript>select * from price_plan_condition where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>pricePlan</foreignTable>
+                    <foreignKey>price_plan_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>rate</key>
+            <sqlScript>select * from rate where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>pricePlan</foreignTable>
+                    <foreignKey>price_plan_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>discount</key>
+            <sqlScript>select * from discount where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>pricePlan</foreignTable>
+                    <foreignKey>price_plan_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>balanceGiving</key>
+            <sqlScript>select * from balance_giving where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>pricePlan</foreignTable>
+                    <foreignKey>price_plan_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>discountRelation</key>
+            <sqlScript>select * from discount_relation where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>discountRelationItem</key>
+            <sqlScript>select * from discount_relation_item where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>discountRelation</foreignTable>
+                    <foreignKey>relation_define_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>billingDateStrategy</key>
+            <sqlScript>select * from billing_date_strategy where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>serviceProvisionStrategy</key>
+            <sqlScript>select * from service_provision_strategy where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>dateStrategy</key>
+            <sqlScript>select * from date_strategy where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>partBillingStrategy</key>
+            <sqlScript>select * from part_billing_strategy where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>durationStopOpenStrategy</key>
+            <sqlScript>select * from duration_stop_open_st where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>conflictConfig</key>
+            <sqlScript>select * from conflict_config where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <!--<sqlConfig>-->
+            <!--<key>warrantyPolicy</key>-->
+            <!--<sqlScript>select * from warranty_policy where create_instant>=? or modify_instant>=?</sqlScript>-->
+        <!--</sqlConfig>-->
+        <!--<sqlConfig>-->
+            <!--<key>problem</key>-->
+            <!--<sqlScript>select * from problem a where create_instant>=? or modify_instant>=?</sqlScript>-->
+            <!--<foreignTableInfos>-->
+                <!--<foreignTableInfo>-->
+                    <!--<foreignTable>company</foreignTable>-->
+                    <!--<foreignKey>company_id</foreignKey>-->
+                <!--</foreignTableInfo>-->
+                <!--<foreignTableInfo>-->
+                    <!--<foreignTable>problem</foreignTable>-->
+                    <!--<foreignKey>parent_id</foreignKey>-->
+                    <!--<recursion>true</recursion>-->
+                <!--</foreignTableInfo>-->
+            <!--</foreignTableInfos>-->
+        <!--</sqlConfig>-->
+        <!--<sqlConfig>-->
+            <!--<key>problemHandling</key>-->
+            <!--<sqlScript>select * from problem_handling a where create_instant>=? or modify_instant>=?</sqlScript>-->
+            <!--<foreignTableInfos>-->
+                <!--<foreignTableInfo>-->
+                    <!--<foreignTable>company</foreignTable>-->
+                    <!--<foreignKey>company_id</foreignKey>-->
+                <!--</foreignTableInfo>-->
+            <!--</foreignTableInfos>-->
+        <!--</sqlConfig>-->
+    </sqlConfigs>
+</cacheConfig>

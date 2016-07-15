@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+    <moduleName>resource_center</moduleName>
+    <sqlConfigs>
+        <sqlConfig>
+            <key>resourceType</key>
+            <sqlScript>select * from RESOURCE_TYPE r where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resourceSpec</key>
+            <sqlScript>select * from RESOURCE_SPEC r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>resourceType</foreignTable>
+                    <foreignKey>resource_type_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>resourceCatalog</foreignTable>
+                    <foreignKey>resource_catalog_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resourceStatus</key>
+            <sqlScript>select * from RESOURCE_STATUS r where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resTypeStatusRel</key>
+            <sqlScript>select * from RES_TYPE_STATUS_REL_HIS r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>resourceType</foreignTable>
+                    <foreignKey>resource_type_id</foreignKey>
+                    <cacheValueKey>resource_status_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>resourceStatus</foreignTable>
+                    <foreignKey>resource_status_id</foreignKey>
+                    <cacheValueKey>resource_type_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+
+        <sqlConfig>
+            <key>resourceCatalog</key>
+            <sqlScript>select * from RESOURCE_CATALOG r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>resourceCatalog</foreignTable>
+                    <foreignKey>parent_id</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resourceBatch</key>
+            <sqlScript>select * from RESOURCE_BATCH r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>resourceSpec</foreignTable>
+                    <foreignKey>resource_spec_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+
+        <sqlConfig>
+            <key>resourceAttr</key>
+            <sqlScript>select * from RESOURCE_ATTR r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>resourceType</foreignTable>
+                    <foreignKey>resource_type_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>resourceAttrOwnerType</foreignTable>
+                    <foreignKey>owner_type</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resourceAttrValue</key>
+            <sqlScript>select * from RESOURCE_ATTR_VALUE r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>resourceAttr</foreignTable>
+                    <foreignKey>resource_attr_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>stockFormType</key>
+            <sqlScript>select * from STOCK_FORM_TYPE r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>stockFormOperatorType</foreignTable>
+                    <foreignKey>operator_type</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resourcePart</key>
+            <sqlScript>select * from resource_part a where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resourceSpecPartRel</key>
+            <sqlScript>select * from RESOURCE_SPEC_PART_REL_HIS r where create_instant>=? or modify_instant>=?
+            </sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>resourceSpec</foreignTable>
+                    <foreignKey>resource_spec_id</foreignKey>
+                    <cacheValueKey>resource_part_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>resourcePart</foreignTable>
+                    <foreignKey>resource_part_id</foreignKey>
+                    <cacheValueKey>resource_spec_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>faultPhenomenon</key>
+            <sqlScript>select * from FAULT_PHENOMENON r where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>resourceSpecFaultRel</key>
+            <sqlScript>select * from RESOURCE_SPEC_FAULT_REL_HIS r where create_instant>=? or modify_instant>=?
+            </sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>resourceSpec</foreignTable>
+                    <foreignKey>resource_spec_id</foreignKey>
+                    <cacheValueKey>fault_phenomenon_id</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>faultPhenomenon</foreignTable>
+                    <foreignKey>fault_phenomenon_id</foreignKey>
+                    <cacheValueKey>resource_spec_id</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+    </sqlConfigs>
+</cacheConfig>

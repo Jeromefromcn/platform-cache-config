@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+	<moduleName>system</moduleName>
+	<sqlConfigs>
+		<sqlConfig>
+			<key>country</key>
+			<sqlScript>select * from country c where create_instant>=? or  modify_instant>=?</sqlScript>
+		</sqlConfig>
+		<sqlConfig>
+			<key>company</key>
+			<sqlScript>select * from company c where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>parent_id</foreignKey>
+					<recursion>true</recursion>
+				</foreignTableInfo>
+				<foreignTableInfo>
+					<foreignTable>country</foreignTable>
+					<foreignKey>country_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>department</key>
+			<sqlScript>select * from department d where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>department</foreignTable>
+					<foreignKey>parent_id</foreignKey>
+					<recursion>true</recursion>
+				</foreignTableInfo>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>user</key>
+			<sqlScript>select * from users u where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>employee</key>
+			<sqlScript>select * from employee e where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+				<foreignTableInfo>
+					<foreignTable>department</foreignTable>
+					<foreignKey>department_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>role</key>
+			<sqlScript>select * from role r where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>right</key>
+			<sqlScript>select * from right r where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>userRoleRel</key>
+			<sqlScript>select * from user_role_rel_his r where create_instant>=? or  modify_instant>=?</sqlScript>
+			<relationTable>true</relationTable>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>user</foreignTable>
+					<foreignKey>user_id</foreignKey>
+					<cacheValueKey>role_id</cacheValueKey>
+				</foreignTableInfo>
+				<foreignTableInfo>
+					<foreignTable>role</foreignTable>
+					<foreignKey>role_id</foreignKey>
+					<cacheValueKey>user_id</cacheValueKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>roleRightRel</key>
+			<sqlScript>select * from role_right_rel_his r where create_instant>=? or  modify_instant>=?</sqlScript>
+			<relationTable>true</relationTable>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>right</foreignTable>
+					<foreignKey>right_id</foreignKey>
+					<cacheValueKey>role_id</cacheValueKey>
+				</foreignTableInfo>
+				<foreignTableInfo>
+					<foreignTable>role</foreignTable>
+					<foreignKey>role_id</foreignKey>
+					<cacheValueKey>right_id</cacheValueKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+	</sqlConfigs>
+</cacheConfig>

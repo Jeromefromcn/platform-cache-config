@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+    <moduleName>account_center</moduleName>
+    <sqlConfigs>
+        <sqlConfig>
+            <key>accountItemType</key>
+            <sqlScript>select * from ACCOUNT_ITEM_TYPE a where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>accountItemTypeClass</foreignTable>
+                    <foreignKey>ACCOUNT_ITEM_TYPE_CLASS_ID</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>accountItemTypeClass</key>
+            <sqlScript>select * from ACCOUNT_ITEM_TYPE_CLASS sa where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>accountItemTypeClass</foreignTable>
+                    <foreignKey>PARENT_ID</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>accountItemTypeLabel</key>
+            <sqlScript>select * from ACCOUNT_ITEM_TYPE_LABEL ss where create_instant>=? or  modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>accountItemTypeLabelRel</key>
+            <sqlScript>select * from ACCOUNT_ITEM_TYPE_LABEL_REL_H r where create_instant>=? or  modify_instant>=?</sqlScript>
+            <relationTable>true</relationTable>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>accountItemType</foreignTable>
+                    <foreignKey>ACCT_ITEM_TYPE_ID</foreignKey>
+                    <cacheValueKey>ACCT_ITEM_TYPE_LABEL_ID</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>accountItemTypeLabel</foreignTable>
+                    <foreignKey>ACCT_ITEM_TYPE_LABEL_ID</foreignKey>
+                    <cacheValueKey>ACCT_ITEM_TYPE_ID</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>auditAlertConf</key>
+            <sqlScript>select * from AUDIT_ALERTION_CONF sa where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>auditMeasureConf</foreignTable>
+                    <foreignKey>AUDIT_MEASURE_CONF_ID</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>auditMeasureConf</key>
+            <sqlScript>select * from AUDIT_MEASURE_CONF sa where create_instant>=? or  modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>balanceAdjustReason</key>
+            <sqlScript>select * from BALANCE_ADJUST_REASON sa where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>COMPANY_ID</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>balanceTransferReason</key>
+            <sqlScript>select * from BALANCE_TRANSFER_REASON sa where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>COMPANY_ID</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>balanceType</key>
+            <sqlScript>select * from BALANCE_TYPE sa where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>COMPANY_ID</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>balanceTypeAcctItemTypeRel</key>
+            <sqlScript>select * from BALANCE_ACCTITEM_TYPE_REL_HIS r where create_instant>=? or  modify_instant>=?</sqlScript>
+            <relationTable>true</relationTable>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>accountItemType</foreignTable>
+                    <foreignKey>ACCT_ITEM_TYPE_ID</foreignKey>
+                    <cacheValueKey>BALANCE_TYPE_ID</cacheValueKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>balanceType</foreignTable>
+                    <foreignKey>BALANCE_TYPE_ID</foreignKey>
+                    <cacheValueKey>ACCT_ITEM_TYPE_ID</cacheValueKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>billItemAdjustReason</key>
+            <sqlScript>select * from BILL_ITEM_ADJUST_REASON sa where create_instant>=? or  modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>COMPANY_ID</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+
+    </sqlConfigs>
+</cacheConfig>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+	<moduleName>customer_center</moduleName>
+	<sqlConfigs>
+		<sqlConfig>
+			<key>agreementType</key>
+			<sqlScript>select * from agreement_type a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>certificateType</key>
+			<sqlScript>select * from certificate_type a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictAntennaType</key>
+			<sqlScript>select * from dict_antenna_type a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictAppellation</key>
+			<sqlScript>select * from dict_appellation a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictCompanyNature</key>
+			<sqlScript>select * from dict_company_nature a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictCustomerClass</key>
+			<sqlScript>select * from dict_customer_class a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictCustomerLevel</key>
+			<sqlScript>select * from dict_customer_level a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictEducation</key>
+			<sqlScript>select * from dict_education a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictIndustry</key>
+			<sqlScript>select * from dict_industry a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictInvalidReason</key>
+			<sqlScript>select * from dict_invalid_reason a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictLsm</key>
+			<sqlScript>select * from dict_lsm a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictMaritalStatus</key>
+			<sqlScript>select * from dict_marital_status a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictMonthlyIncome</key>
+			<sqlScript>select * from dict_monthly_income a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictNation</key>
+			<sqlScript>select * from dict_nation a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictReligion</key>
+			<sqlScript>select * from dict_religion a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictResumeReason</key>
+			<sqlScript>select * from dict_resume_reason a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictSocietyType</key>
+			<sqlScript>select * from dict_society_type a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictSubscriberType</key>
+			<sqlScript>select * from dict_subscriber_type a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictSubsidiaryType</key>
+			<sqlScript>select * from dict_subsidiary_type a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+		<sqlConfig>
+			<key>dictVacation</key>
+			<sqlScript>select * from dict_vacation a where create_instant>=? or  modify_instant>=?</sqlScript>
+			<foreignTableInfos>
+				<foreignTableInfo>
+					<foreignTable>company</foreignTable>
+					<foreignKey>company_id</foreignKey>
+				</foreignTableInfo>
+			</foreignTableInfos>
+		</sqlConfig>
+	</sqlConfigs>
+</cacheConfig>
