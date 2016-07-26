@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+    <moduleName>card_center</moduleName>
+    <sqlConfigs>
+        <sqlConfig>
+            <key>cardSpec</key>
+            <sqlScript>select * from CARD_SPEC r where create_instant>=? or modify_instant>=?</sqlScript>
+        </sqlConfig>
+        <sqlConfig>
+            <key>cardRule</key>
+            <sqlScript>select * from CARD_RULE r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>cardElement</key>
+            <sqlScript>select * from CARD_ELEMENT r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>cardRule</foreignTable>
+                    <foreignKey>CARD_RULE_ID</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>cardGenerate</key>
+            <sqlScript>select * from CARD_GENERATE r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>cardSpec</foreignTable>
+                    <foreignKey>CARD_SPEC_ID</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+
+        <sqlConfig>
+            <key>usbKey</key>
+            <sqlScript>select * from USB_KEY r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+    </sqlConfigs>
+</cacheConfig>
