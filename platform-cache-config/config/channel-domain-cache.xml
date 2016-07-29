@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+    <moduleName>channel</moduleName>
+    <sqlConfigs>
+        <sqlConfig>
+            <key>channel</key>
+            <sqlScript>select * from channel c where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+    </sqlConfigs>
+</cacheConfig>

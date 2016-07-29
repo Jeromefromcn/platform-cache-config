@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cacheConfig>
+    <moduleName>problem_center</moduleName>
+    <sqlConfigs>
+        <sqlConfig>
+            <key>callcenterAgent</key>
+            <sqlScript>select * from callcenter_agent r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>problemType</key>
+            <sqlScript>select * from problem_type r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>problemType</foreignTable>
+                    <foreignKey>parent_id</foreignKey>
+                    <recursion>true</recursion>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>problemHandlingType</key>
+            <sqlScript>select * from problem_handling_type r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>problemSmsTemplate</key>
+            <sqlScript>select * from problem_sms_template r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+
+        <sqlConfig>
+            <key>question</key>
+            <sqlScript>select * from question r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>questionOption</key>
+            <sqlScript>select * from question_option r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>question</foreignTable>
+                    <foreignKey>question_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+
+        <sqlConfig>
+            <key>questionnaire</key>
+            <sqlScript>select * from questionnaire r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>questionnaireRel</key>
+            <sqlScript>select * from questionnaire_rel r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>questionnaire</foreignTable>
+                    <foreignKey>questionnaire_id</foreignKey>
+                </foreignTableInfo>
+                <foreignTableInfo>
+                    <foreignTable>question</foreignTable>
+                    <foreignKey>question_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>callOutActivityType</key>
+            <sqlScript>select * from callout_activity_type r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+        <sqlConfig>
+            <key>callOutFailureReason</key>
+            <sqlScript>select * from callout_failure_reason r where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
+    </sqlConfigs>
+</cacheConfig>

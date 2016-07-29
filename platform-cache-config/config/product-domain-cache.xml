@@ -424,10 +424,16 @@
             <key>conflictConfig</key>
             <sqlScript>select * from conflict_config where create_instant>=? or modify_instant>=?</sqlScript>
         </sqlConfig>
-        <!--<sqlConfig>-->
-            <!--<key>warrantyPolicy</key>-->
-            <!--<sqlScript>select * from warranty_policy where create_instant>=? or modify_instant>=?</sqlScript>-->
-        <!--</sqlConfig>-->
+        <sqlConfig>
+            <key>warrantyPolicy</key>
+            <sqlScript>select * from warranty_policy where create_instant>=? or modify_instant>=?</sqlScript>
+            <foreignTableInfos>
+                <foreignTableInfo>
+                    <foreignTable>company</foreignTable>
+                    <foreignKey>company_id</foreignKey>
+                </foreignTableInfo>
+            </foreignTableInfos>
+        </sqlConfig>
         <!--<sqlConfig>-->
             <!--<key>problem</key>-->
             <!--<sqlScript>select * from problem a where create_instant>=? or modify_instant>=?</sqlScript>-->
